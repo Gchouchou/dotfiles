@@ -2,12 +2,23 @@ set iskeyword+=:
 set ts=2
 set sw=2
 set sts=2
-set listchars+=space:␣
+" set listchars+=space:␣
 set noexpandtab
 
 " Enable `Alt` key macros
 let g:Tex_AdvancedMath = 1
+" Spell Check
+setlocal spell
+set spelllang=en_gb
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
+" More responsive Ultisnips
+"inoremap <silent> () ()<c-r>=UltiSnips#ExpandSnippet()<cr>
+"inoremap <silent> {} {}<c-r>=UltiSnips#ExpandSnippet()<cr>
+"inoremap <silent> [] []<c-r>=UltiSnips#ExpandSnippet()<cr>
+"inoremap <silent> (( ((<c-r>=UltiSnips#ExpandSnippet()<cr>
+"inoremap <silent> {{ {{<c-r>=UltiSnips#ExpandSnippet()<cr>
+"inoremap <silent> [[ [[<c-r>=UltiSnips#ExpandSnippet()<cr>
 function! UpdatePDF()
     silent! execute "silent! Start! latexmk -f -silent %"
 endfunction

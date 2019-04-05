@@ -1,0 +1,11 @@
+snippet "symb(\S)" "Greek Letter" wAr
+`!p snip.rv = "context math()"`
+`!p snip.rv = "snippet"` \``!p snip.rv = match.group(1)` "$1" wA
+\\$1
+`!p snip.rv = "endsnippet"`
+endsnippet
+snippet usnip "Ultisnips snippet definition" b
+`!p snip.rv = "snippet"` ${1:Tab_trigger} "${2:Description}" ${3:b}
+${0:${VISUAL}}
+`!p snip.rv = "endsnippet"`
+endsnippet

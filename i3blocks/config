@@ -12,7 +12,7 @@ command=~/.config/i3blocks/scripts/$BLOCK_NAME
 interval=5
 
 [wifi]
-instance=wlp3s0
+instance=wlp2s0
 interval=1
 
 [bluetooth]

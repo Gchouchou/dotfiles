@@ -1,0 +1,50 @@
+
+snippet bash "bash" b
+#!/usr/bin/bash
+endsnippet
+
+snippet if "If statement" b
+if [[ ${1:condition} ]]; then
+	${0:${VISUAL}}
+fi
+endsnippet
+
+snippet for "for loop" b
+for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet wh "while" b
+while [[ ${1:condition} ]]; do
+	${0:${VISUAL}}
+done
+endsnippet
+
+snippet '([A-Za-z0-9]+)(var)' "variable" iAr
+$`!p
+snip.rv = match.group(1)
+`
+endsnippet
+
+snippet fun "function" b
+${1:function_name}() {
+	${0:#function_body}
+}
+endsnippet
+
+snippet " "autoclosing " iA
+"$1"
+endsnippet
+
+snippet [ "autoclosing " iA
+[$1]
+endsnippet
+
+snippet ( "autoclosing " iA
+($1)
+endsnippet
+
+snippet ` "autoclosing " iA
+\`$1\`
+endsnippet

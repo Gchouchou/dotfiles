@@ -13,7 +13,7 @@
 
 # == PS1 ==
 case ${USER} in
-    waigni) _get_PS1() { echo -n '\[\e[0;97m\]w\[\e[38;5;250m\]a\[\e[38;5;245m\]i\[\e[38;5;81m\]g\[\e[38;5;45m\]n\[\e[38;5;39m\]i\[\e[1;97m\] \W \[\e[m\e(B\]' ; } ;;
+    jyu)    _get_PS1() { echo -n '\[\e[38;5;81m\]j\[\e[38;5;45m\]y\[\e[38;5;39m\]u\[\e[1;97m\] \W \[\e[m\e(B\]' ; } ;;
     root)   _get_PS1() { echo -n '\[\e[0;91m\][root] \[\e[1;97m\]\W \[\e[m\e(B\]' ; } ;;
     *)      _get_PS1() { echo -n '\u \[\e[1;97m\]\W \[\e[m\e(B\]' ; } ;;
 esac
@@ -76,6 +76,15 @@ alias br="source $HOME/.bashrc"
 
 # Full system upgrade
 # alias pSyyu="command yay --nouseask --noconfirm -Syyu"
+
+# Comp206 mimi ssh
+export MIMI="jyu104@mimi.cs.mcgill.ca"
+
+# navigate to currentSemester
+alias mcgill="cd ~/Documents/Mcgill/Winter2019/"
+
+# MEGA uploadpdf
+alias mega-upload="~/MEGA/uploadPDF.sh"
 
 # pacman
 # alias p="command yay"
