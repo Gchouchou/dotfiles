@@ -77,15 +77,6 @@ alias br="source $HOME/.bashrc"
 # Full system upgrade
 # alias pSyyu="command yay --nouseask --noconfirm -Syyu"
 
-# Comp206 mimi ssh
-export MIMI="jyu104@mimi.cs.mcgill.ca"
-
-# navigate to currentSemester
-alias mcgill="cd ~/Documents/Mcgill/Winter2019/"
-
-# MEGA uploadpdf
-alias mega-upload="~/MEGA/uploadPDF.sh"
-
 # pacman
 # alias p="command yay"
 
