@@ -98,6 +98,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories = ['/home/jyu/.vim/UltiSnips', 'UltiSnips', '~/UltiSnips']
 nmap <leader>ue :UltiSnipsEdit<cr>
 " }}}
+" {{{ Tagbar
+nmap <F8> :TagbarToggle<CR>
+"}}}
 " }}}
 " General {{{
 
