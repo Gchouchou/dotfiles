@@ -229,7 +229,7 @@ bindsym $mod+Shift+r    exec $term          -e rtv
 bindsym $mod+z          exec $term          -e calcurse
 bindsym $mod+Shift+z    exec $term          -e neomutt
 bindsym $mod+g          exec $browser
-bindsym $mod+Shift+s    exec $spotify
+#bindsym $mod+Shift+s    exec $spotify
 
 # Scratchpad
 # $exec $term -geometry 123x48 -name "scratchpad/utils/top" -e htop
@@ -338,7 +338,7 @@ for_window [class="Nm-connection-editor"] floating enable
 # WS1
 # WS2
     # assign [window_role="browser"]    $WS2
-    # assign [class="Chromium"]         $WS2
+    assign [class="Chromium"]           $WS2
     # assign [class="Google-chrome"]    $WS2
     # assign [class="qutebrowswer"]     $WS2
     assign [class="Firefox"]            $WS2
@@ -349,7 +349,7 @@ for_window [class="Nm-connection-editor"] floating enable
     assign [class="Zathura"]            $WS4
 # WS5
     assign [instance="latexmk"]         $WS5
-    assign [class="DrRacket"]           $WS5
+    #assign [class="DrRacket"]           $WS5
 # WS6
     #assign [class="Lutris"]            $WS6
     #assign [class="Steam"]             $WS6
@@ -373,6 +373,7 @@ $exec redshift-qt
 $exec emacs --daemon
 $exec fcitx
 $exec megasync
+$exec mega-sync
 # $exec nm-applet
 $exec compton -b 
 # $exec conky -d

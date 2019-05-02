@@ -28,34 +28,34 @@ def preamble():
 		if None != re.match(r"[\\]begin{document}",vim.current.buffer[line]):
 			return False
 	return True
-def tooHard():
-	a = snip.window.cursor[0]
-	b = snip.window.cursor[1]
-	snip.buffer[snip.window.cursor[0]-1] =snip.buffer[snip.window.cursor[0]-1][:snip.window.cursor[1]-2] + snip.buffer[snip.window.cursor[0]-1][snip.window.cursor[1]+1:]
-	snip.cursor.set(a-1,b-2)
-def asy():
-	row = snip.window.cursor[0] - 1
-	i = row
-	test = False
-	bol = True
-	while bol == True and test == False:
-		test = re.search(r"\\end{asy}", vim.current.buffer[i]) != None
-		bol = re.search(r"\\begin{\w*", vim.current.buffer[i]) == None
-		bol = re.search(r"\\end{(?!(asy))", vim.current.buffer[i]) == None
-		i = i+1
-	if test == False:
-		return False
-	bol = True
-	test = False
-	i = row
-	while bol == True and test == False:
-		test = re.search(r"\\begin{asy}", vim.current.buffer[i]) != None
-		bol = re.search(r"\\end{\w*", vim.current.buffer[i]) == None
-		bol = re.search(r"\\begin{(?!(asy))", vim.current.buffer[i]) == None
-		i = i-1
-	if test == True:
-		return True
-	return False
+# def tooHard():
+# 	a = snip.window.cursor[0]
+# 	b = snip.window.cursor[1]
+# 	snip.buffer[snip.window.cursor[0]-1] =snip.buffer[snip.window.cursor[0]-1][:snip.window.cursor[1]-2] + snip.buffer[snip.window.cursor[0]-1][snip.window.cursor[1]+1:]
+# 	snip.cursor.set(a-1,b-2)
+# def asy():
+# 	row = snip.window.cursor[0] - 1
+# 	i = row
+# 	test = False
+# 	bol = True
+# 	while bol == True and test == False:
+# 		test = re.search(r"\\end{asy}", vim.current.buffer[i]) != None
+# 		bol = re.search(r"\\begin{\w*", vim.current.buffer[i]) == None
+# 		bol = re.search(r"\\end{(?!(asy))", vim.current.buffer[i]) == None
+# 		i = i+1
+# 	if test == False:
+# 		return False
+# 	bol = True
+# 	test = False
+# 	i = row
+# 	while bol == True and test == False:
+# 		test = re.search(r"\\begin{asy}", vim.current.buffer[i]) != None
+# 		bol = re.search(r"\\end{\w*", vim.current.buffer[i]) == None
+# 		bol = re.search(r"\\begin{(?!(asy))", vim.current.buffer[i]) == None
+# 		i = i-1
+# 	if test == True:
+# 		return True
+# 	return False
 endglobal
 # }}}
 
@@ -111,17 +111,17 @@ snippet '(\\)?(tex)' "text mode" iAr
 \text{${1:${VISUAL}}}
 endsnippet
 context "math()"
-pre_expand "tooHard()"
+#pre_expand "tooHard()"
 snippet {{ "left right Brackets" iA
 \left\\\{ $1 \right\\\}
 endsnippet
 context "math()"
-pre_expand "tooHard()"
+#pre_expand "tooHard()"
 snippet (( "left right Parenthesis" iA
 \left( $1 \right)
 endsnippet
 context "math()"
-pre_expand "tooHard()"
+#pre_expand "tooHard()"
 snippet [[ "left right Square Brackets" iA
 \left[ $1 \right]
 endsnippet
@@ -129,13 +129,19 @@ context "math()"
 snippet || "left right bars" iA
 \left| $1 \right|
 endsnippet
-context "math() and re.match('\(\)', snip.buffer[snip.window.cursor[0]][snip.window.cursor[1]-1:snip.window.cursor[1]+1]) == None"
-snippet '(?<!(\())\(' "parenthesis" irA
-($1)
+#context "math() and re.match('\(\)', snip.buffer[snip.window.cursor[0]][snip.window.cursor[1]-1:snip.window.cursor[1]+1]) == None"
+context "math()"
+snippet '(?<!\\left)\(([^\(\)])' "parenthesis" irA
+(`!p snip.rv = match.group(1)`$1)
 endsnippet
-context "math() and re.match('\[\]', snip.buffer[snip.window.cursor[0]-1][snip.window.cursor[1]-1:snip.window.cursor[1]+1]) == None"
-snippet '(?<!(\[))\[' "square brackets" irA
-[$1]
+#context "math() and re.match('\(\)', snip.buffer[snip.window.cursor[0]][snip.window.cursor[1]-1:snip.window.cursor[1]+1]) == None"
+context "math()"
+snippet '(?<!\\left)\[([^\[\]])' "square brackets" irA
+[`!p snip.rv = match.group(1)`$1]
+endsnippet
+context "math()"
+snippet '(?<!\\left)\{([^\{\}])' "square brackets" irA
+{`!p snip.rv = match.group(1)`$1}
 endsnippet
 # }}}
 
@@ -314,10 +320,10 @@ context math()
 snippet `f "varphi" iA
 \varphi
 endsnippet
-#context math()
-#snippet `c "chi" iA
-#\chi
-#endsnippet
+context math()
+snippet `c "chi" iA
+\chi
+endsnippet
 #context math()
 #snippet `y "psi" iA
 #\psi
@@ -327,8 +333,8 @@ snippet `w "omega" iA
 \omega
 endsnippet
 context math()
-snippet `A "Alpha" iA
-\Alpha
+snippet `A "forall" iA
+\forall
 endsnippet
 context math()
 snippet `B "Beta" iA
@@ -353,6 +359,10 @@ endsnippet
 #snippet `H "Eta" iA
 #\Eta
 #endsnippet
+context math()
+snippet `Q "theta" iA
+\Theta
+endsnippet
 context math()
 snippet `K "Kappa" iA
 \Kappa
@@ -503,6 +513,14 @@ endsnippet
 # }}}.
 
 context "math()"
+snippet `(\\)under` "underline" iAr
+\underline{$1}$0
+endsnippet
+context "math()"
+snippet `(\\)dot` "dot" iAr
+\dot{$1}$0
+endsnippet
+context "math()"
 snippet sq "square root" iA
 \sqrt{$1}$0
 endsnippet
@@ -548,7 +566,7 @@ context "not math() and snip.buffer[snip.window.cursor[0]-1].count('(') > snip.b
 snippet ( "Parenthesis"  iA
 (${1:${VISUAL}})
 endsnippet
-context " snip.buffer[snip.window.cursor[0]-1].count('{') > snip.buffer[snip.window.cursor[0]-1].count('}')"
+context "not math() and snip.buffer[snip.window.cursor[0]-1].count('{') > snip.buffer[snip.window.cursor[0]-1].count('}')"
 snippet '(?<!(\{))\{' "brackets" irA
 {${1:${VISUAL}}}
 endsnippet
@@ -629,9 +647,18 @@ endsnippet
 #$0
 #endsnippet
 # }}}
-context asy()
-snippet point "making a point" i
-$1 = ($2,$3);
-filldraw(circle($1,0.07), ${4:black}, black+linewidth(0.1));
-label("${5:\$$1\$}", $1, ${6:N});
-endsnippet
+
+# context asy()
+# snippet point "making a point" i
+# $1 = ($2,$3);
+# $0
+# filldraw(circle($1,0.07), ${4:black}, black+linewidth(0.1));
+# label("${5:\$$1\$}", $1, ${6:N});
+# endsnippet
+# context asy()
+# snippet dot "making a dot" i
+# $1 = ($2,$3);
+# $0
+# dot($1);
+# label("${5:\$$1\$}", $1, ${6:N});
+# endsnippet
