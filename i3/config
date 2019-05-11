@@ -104,6 +104,9 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+d focus child
 
+# jump to urgent window
+bindsym $mod+x [urgent=latest] focus
+
 # set workspace vars
 set $WS1 "1: "
 set $WS2 "2: "
@@ -240,7 +243,7 @@ bindsym $mod+g          exec $browser
 # bindsym $mod+n          [instance="utils/notes$"]  scratchpad show
 bindsym $mod+i          $exec $term -n "utils/top" -e htop
 bindsym $mod+Shift+c    $exec $term -n "utils/R" -e R -q --no-save --no-restore
-bindsym $mod+n          $exec $term -n "utils/notes" -e nvim $HOME/.notes.txt
+bindsym $mod+n          $exec $term -n "utils/notes" -e nvim
 
 for_window [instance="utils/"] floating enable
 for_window [instance="scratchpad/"] move scratchpad
@@ -345,6 +348,7 @@ for_window [class="Nm-connection-editor"] floating enable
     assign [class="Waterfox"]           $WS2
 # WS3
     assign [class="bomi"]               $WS3
+    assign [class="code-oss"]           $WS3
 # WS4
     assign [class="Zathura"]            $WS4
 # WS5
@@ -356,12 +360,12 @@ for_window [class="Nm-connection-editor"] floating enable
 # WS7
     assign [class="mpv"]                $WS7
 # WS8
-    assign [class="Discord"]            $WS8
 # WS9
     #assign [class="qBittorrent"]       $WS9
 # WS0
     #assign [class="KeePass"]           $WS0
-    for_window [class="Spotify"] move to workspace $WS0
+    assign [class="discord"]            $WS0
+    #for_window [class="Spotify"] move to workspace $WS0
 
 # == STARTUP ==
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -376,7 +380,6 @@ $exec megasync
 $exec mega-sync
 # $exec nm-applet
 $exec compton -b 
-# $exec conky -d
 
 
 # $exec keepass
