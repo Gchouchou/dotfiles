@@ -135,7 +135,7 @@ snippet '(?<!\\left)\(([^\(\)])' "parenthesis" irA
 (`!p snip.rv = match.group(1)`$1)
 endsnippet
 #context "math() and re.match('\(\)', snip.buffer[snip.window.cursor[0]][snip.window.cursor[1]-1:snip.window.cursor[1]+1]) == None"
-context "math() and re.match('\(.\)', vim.current.window.buffer[vim.current.window.cursor[0] - 1][vim.current.window.cursor[1]-2:vim.current.window.cursor[1] + 1]) == None"
+context "math() and re.match('\[.\]', vim.current.window.buffer[vim.current.window.cursor[0] - 1][vim.current.window.cursor[1]-2:vim.current.window.cursor[1] + 1]) == None"
 snippet '(?<!\\left)\[([^\[\]])' "square brackets" irA
 [`!p snip.rv = match.group(1)`$1]
 endsnippet
